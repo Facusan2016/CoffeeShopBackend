@@ -6,8 +6,15 @@ require("dotenv").config();
 
 app.use(express.json());
 app.use(express.urlencoded({extended : true}));
-app.use(cors())
 
+var  MyAllowSpecificOrigins = ["https://beanscene.netlify.app", "http://localhost:5173"];
+
+var corsOptions = {
+    origin: MyAllowSpecificOrigins,
+    optionsSuccessStatus: 200 // For legacy browser support
+}
+
+app.use(cors(corsOptions));
 app.use('/', require('./router/router'));
 
 
