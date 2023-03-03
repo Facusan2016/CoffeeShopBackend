@@ -14,6 +14,6 @@ app.use(express.urlencoded({extended : true}));
 app.use('/', require('./router/router'));
 
 
-app.listen(4000, ()=>{
+app.listen(process.env.APP_PORT, ()=>{
     console.log(`Servidor corriendo en puerto ${process.env.APP_PORT}`);
 })
