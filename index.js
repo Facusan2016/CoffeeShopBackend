@@ -7,12 +7,7 @@ app.use(express.static('public'));
 
 var  MyAllowSpecificOrigins = ["https://beanscene.netlify.app", "http://localhost:5173"];
 
-var corsOptions = {
-    origin: MyAllowSpecificOrigins,
-    optionsSuccessStatus: 200 // For legacy browser support
-}
-
-app.use(cors(corsOptions));
+app.use(cors());
 
 app.use(express.json());
 app.use(express.urlencoded({extended : true}));
