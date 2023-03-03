@@ -11,10 +11,11 @@ app.use(cors({origin: '*'}));
 app.use(express.json());
 app.use(express.urlencoded({extended : true}));
 
+const port = process.env.PORT || 3500
 
 app.use('/', require('./router/router'));
 
 
-app.listen(process.env.APP_PORT, ()=>{
-    console.log(`Servidor corriendo en puerto ${process.env.APP_PORT}`);
+app.listen(port, ()=>{
+    console.log(`Servidor corriendo en puerto ${port}`);
 })
