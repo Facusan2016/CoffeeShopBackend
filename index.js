@@ -5,6 +5,7 @@ require("dotenv").config();
 const app = express();
 app.use(express.static('public'));
 
+app.set('trust proxy' true)
 app.use(cors({origin: '*'}));
 
 app.use(express.json());
