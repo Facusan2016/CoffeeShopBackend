@@ -9,11 +9,11 @@ router.get('/', (req, res) => {
     })
 });
 
-router.post('send-email',[
+router.post('/send-email',[
     check('email', 'not valid email').isEmail()
 ], sendEmail);
 
-router.post('recieve-email',[
+router.post('/recieve-email',[
     
     check('name', 'Name is required.').not().isEmpty(),
     check('email', 'Not valid email').isEmail(),
