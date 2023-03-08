@@ -5,9 +5,9 @@ var nodemailer = require('nodemailer');
 const sendEmail = (req, res) =>{
 
 
-    const errors = validationResult( req ); //Checkeo que las entradas que tengo en mi req, son válidas, en caso de que no lo sean, envío una respuesta
-                                            //con los errores que se cometieron, nuevamente usando express-validator
-    
+    const errors = validationResult( req );  // Checking if entries in my req are valid entries using express-validator, 
+                                            // if there was one that's not valid, i'm sending a response with the erros
+
     if(!errors.isEmpty()){
         console.log(errors);
         return res.status(400).json({
@@ -16,7 +16,7 @@ const sendEmail = (req, res) =>{
         })
     }
 
-    var transporter = nodemailer.createTransport({
+    var transporter = nodemailer.createTransport({ //Using node-mailer to send the repsonse mail
         service : 'gmail',
         auth : {
             user : process.env.EMAIL,
@@ -24,7 +24,7 @@ const sendEmail = (req, res) =>{
         }
     })
 
-    var mailOptions = {
+    var mailOptions = { //Here is the mail configuration
         from: `${process.env.EMAIL}@gmail.com`,
         to: `${req.body.email}`,
         subject: 'This is an example email!',

@@ -13,7 +13,7 @@ router.post('/send-email',[
     check('email', 'not valid email').isEmail()
 ], sendEmail);
 
-router.post('/recieve-email',[
+router.post('/recieve-email',[ //Checking if the routes are valid using express-validator.
     
     check('name', 'Name is required.').not().isEmpty(),
     check('email', 'Not valid email').isEmail(),
