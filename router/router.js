@@ -1,7 +1,7 @@
 const { Router }= require('express');
 const router = Router();
 const { check } = require('express-validator')
-const {sendEmail, recieveEmail} = require('../controllers/controller')
+const {sendEmail, recieveEmail, getCoffees} = require('../controllers/controller')
 
 router.get('/', (req, res) => {
     res.status(200).send({
@@ -20,5 +20,7 @@ router.post('/recieve-email',[ //Checking if the routes are valid using express-
     check('msg', 'Message is required').not().isEmpty(),
 
 ], recieveEmail);
+
+router.get('/get-data', getCoffees);
 
 module.exports = router;

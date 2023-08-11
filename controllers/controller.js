@@ -1,6 +1,7 @@
 var {response} = require('express');
 const {validationResult} = require('express-validator');
 var nodemailer = require('nodemailer');
+const Coffee = require('../models/Coffee');
 
 const sendEmail = (req, res) =>{
 
@@ -97,8 +98,34 @@ const recieveEmail = (req, res) =>{
 
 }
 
+const getCoffees = async(req, res) => {
+  
+  try {
+    
+    const resp = await Coffee.find().select();
+    console.log(resp);
+    res.status(201).json({
+      ok : true,
+      message : 'Traído con éxito',
+      resp : resp
+
+    })
+
+
+  } catch (error) {
+    
+    console.log(error);
+    res.status(500).json({
+      ok : false,
+      message : 'There was a problem bringing all the quotes.'
+    })
+
+  }
+}
+
 
 module.exports = {
   sendEmail,
-  recieveEmail
+  recieveEmail,
+  getCoffees
 }
